@@ -1,6 +1,6 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import styled from 'styled-components'
-import { animated, useSpring } from 'react-spring'
+import { animated, useSpring, useTransition, config } from 'react-spring'
 
 const springConfig = {
   friction: 30,
@@ -8,7 +8,22 @@ const springConfig = {
   mass: 4
 }
 
+const items = [
+  {
+    text: 'Tre',
+    padding: 93
+  },
+  { text: 'Fem', padding: 119 },
+  { text: 'Sju', padding: 91 }
+]
+
 export default function Header() {
+  const [index, setIndex] = useState(0)
+  useEffect(
+    () => void setInterval(() => setIndex(state => (state + 1) % 3), 2000),
+    []
+  )
+
   const topAnimation = useSpring({
     from: { opacity: 0, transform: 'translate(-100%) rotate(8deg)' },
     to: { opacity: 1, transform: 'translate(0) rotate(-8deg)' },
@@ -23,9 +38,23 @@ export default function Header() {
     delay: 500
   })
 
+  const transitions = useTransition(items[index], item => item.text, {
+    from: { position: 'absolute', opacity: 0, transform: 'translateY(-100%)' },
+    enter: { opacity: 1, transform: 'translateY(0%)' },
+    leave: { opacity: 0, transform: 'translateY(50%)' },
+    config: config.stiff
+  })
+
   return (
     <StyledHeading>
-      <StyledHeadingTop style={topAnimation}>Femkamps</StyledHeadingTop>
+      <StyledHeadingTop style={topAnimation}>
+        {transitions.map(({ item, key, props }) => (
+          <animated.span key={key} style={props}>
+            {item.text}
+          </animated.span>
+        ))}
+        <span style={{ paddingLeft: `${items[index].padding}px` }}>kamps</span>
+      </StyledHeadingTop>
       <StyledHeadingBottom style={bottomAnimation}>
         Generatorn
       </StyledHeadingBottom>
