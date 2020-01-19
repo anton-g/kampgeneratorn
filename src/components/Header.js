@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React from 'react'
 import styled from 'styled-components'
 import { animated, useSpring, useTransition, config } from 'react-spring'
 
@@ -10,20 +10,16 @@ const springConfig = {
 
 const items = [
   {
+    key: 3,
     text: 'Tre',
     padding: 93
   },
-  { text: 'Fem', padding: 119 },
-  { text: 'Sju', padding: 91 }
+  { key: 5, text: 'Fem', padding: 119 },
+  { key: 7, text: 'Sju', padding: 91 },
+  { key: 10, text: 'Tio', padding: 89 }
 ]
 
-export default function Header() {
-  const [index, setIndex] = useState(0)
-  useEffect(
-    () => void setInterval(() => setIndex(state => (state + 1) % 3), 2000),
-    []
-  )
-
+export default function Header({ selectedCount = 3 }) {
   const topAnimation = useSpring({
     from: { opacity: 0, transform: 'translate(-100%) rotate(8deg)' },
     to: { opacity: 1, transform: 'translate(0) rotate(-8deg)' },
@@ -38,11 +34,17 @@ export default function Header() {
     delay: 500
   })
 
-  const transitions = useTransition(items[index], item => item.text, {
+  const item = items.find(i => i.key === selectedCount) ?? items[0]
+  const transitions = useTransition(item, item => item.text, {
     from: { position: 'absolute', opacity: 0, transform: 'translateY(-100%)' },
     enter: { opacity: 1, transform: 'translateY(0%)' },
     leave: { opacity: 0, transform: 'translateY(50%)' },
     config: config.stiff
+  })
+
+  const paddingAnimation = useSpring({
+    paddingLeft: `${item.padding}px`,
+    config: config.wobbly
   })
 
   return (
@@ -53,7 +55,7 @@ export default function Header() {
             {item.text}
           </animated.span>
         ))}
-        <span style={{ paddingLeft: `${items[index].padding}px` }}>kamps</span>
+        <animated.span style={paddingAnimation}>kamps</animated.span>
       </StyledHeadingTop>
       <StyledHeadingBottom style={bottomAnimation}>
         Generatorn
