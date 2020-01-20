@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from 'react'
-import { useSpring, animated, config } from 'react-spring'
 import CountSelect from './CountSelect'
 
 export default function Settings({ onChange }) {
-  const [selectedCount, setSelectedCount] = useState(values[0])
+  const [selectedCount, setSelectedCount] = useState(values[0].value)
 
   useEffect(() => {
     onChange({
@@ -11,21 +10,14 @@ export default function Settings({ onChange }) {
     })
   }, [selectedCount, onChange])
 
-  const anim = useSpring({
-    from: { opacity: 0 },
-    to: { opacity: 1 },
-    config: config.molasses,
-    delay: 2000
-  })
-
   return (
-    <animated.div style={anim}>
+    <div>
       <CountSelect
         values={values}
         defaultValue={selectedCount}
         onChange={setSelectedCount}
       ></CountSelect>
-    </animated.div>
+    </div>
   )
 }
 

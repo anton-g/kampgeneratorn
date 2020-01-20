@@ -12,11 +12,11 @@ const items = [
   {
     key: 3,
     text: 'Tre',
-    padding: 93
+    padding: 91
   },
   { key: 5, text: 'Fem', padding: 119 },
-  { key: 7, text: 'Sju', padding: 91 },
-  { key: 10, text: 'Tio', padding: 89 }
+  { key: 7, text: 'Sju', padding: 88 },
+  { key: 10, text: 'Tio', padding: 87 }
 ]
 
 export default function Header({ selectedCount = 3 }) {
