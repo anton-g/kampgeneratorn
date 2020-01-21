@@ -5,17 +5,15 @@ export default function Card({ item, style }) {
   return (
     <CardContainer color={item.color} style={style}>
       <CardContent>
-        <CardHeader>Spiktävling</CardHeader>
-        <CardDescription>
-          Spika ner ett antal spikar i en bräda på kortast tid.
-        </CardDescription>
+        <CardHeader>{item.title}</CardHeader>
+        <CardDescription>{item.description}</CardDescription>
       </CardContent>
       <CardMaterial>
         <h3>Du behöver</h3>
         <ul>
-          <li>Hammare</li>
-          <li>Spik</li>
-          <li>Bräda</li>
+          {item.resources.map(x => (
+            <li key={x}>{x}</li>
+          ))}
         </ul>
       </CardMaterial>
     </CardContainer>
@@ -25,7 +23,6 @@ export default function Card({ item, style }) {
 const CardContainer = styled.div`
   box-sizing: border-box;
   width: 500px;
-  max-height: 150px;
   min-height: 100px;
   will-change: transform, opacity;
   transform-origin: center top;
@@ -58,9 +55,11 @@ const CardDescription = styled.p`
 
 const CardMaterial = styled.div`
   flex-shrink: 0;
+  margin-top: 4px;
 
   h3 {
     margin: 0;
+    margin-bottom: 4px;
     font-size: 1rem;
   }
 
