@@ -1,19 +1,19 @@
 import React from 'react'
-import styled from 'styled-components'
-import { useTransition, animated as a } from 'react-spring'
+import { useTransition, animated } from 'react-spring'
+import Card from './Card'
 
 export default function Cards({ items }) {
-  const transitions = useTransition(items, item => item.key, {
+  const transitions = useTransition(items, item => item.id, {
     from: { opacity: 0, transform: `perspective(600px) rotateX(-90deg)` },
     enter: { opacity: 1, transform: `perspective(600px) rotateX(0deg)` },
-    trail: 500,
+    trail: 250,
     config: { mass: 1.5, tension: 120, friction: 12, precision: 0.01 }
   })
 
   return transitions.map(({ item, props, key }) => (
-    <Card
+    <AnimatedCard
       key={key}
-      color={item.color}
+      item={item}
       style={{
         opacity: props.opacity.interpolate(o => o),
         transform: props.transform
@@ -22,16 +22,4 @@ export default function Cards({ items }) {
   ))
 }
 
-const Card = styled(a.div)`
-  max-width: 500px;
-  max-height: 150px;
-  width: 50ch;
-  height: 50ch;
-  will-change: transform, opacity;
-  transform-origin: center top;
-  background-size: cover;
-  background-color: ${props => props.color};
-  border-radius: 10px;
-  border: 3px solid #ece8d9;
-  margin-bottom: 10px;
-`
+const AnimatedCard = animated(Card)

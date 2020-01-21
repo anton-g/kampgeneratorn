@@ -20,9 +20,9 @@ function App() {
 
   const handleClick = () => {
     setItems(
-      colors.slice(0, settings.count).map((c, idx) => ({
-        key: idx,
-        color: c
+      tempData.slice(0, settings.count).map(item => ({
+        ...item,
+        color: colors[Math.floor(Math.random() * colors.length)]
       }))
     )
   }
@@ -53,6 +53,39 @@ const FormWrapper = styled(animated.div)`
   flex-direction: column;
   margin-bottom: 25px;
 `
+
+const tempData = [
+  {
+    id: 1,
+    title: 'Spiktävling',
+    description: 'Spika ner ett antal spikar i en bräda på kortast tid.',
+    resources: ['Hammare', 'Spik', 'Bräda']
+  },
+  {
+    id: 2,
+    title: 'Spiktävling',
+    description: 'Spika ner ett antal spikar i en bräda på kortast tid.',
+    resources: ['Hammare', 'Spik', 'Bräda']
+  },
+  {
+    id: 3,
+    title: 'Spiktävling',
+    description: 'Spika ner ett antal spikar i en bräda på kortast tid.',
+    resources: ['Hammare', 'Spik', 'Bräda']
+  },
+  {
+    id: 4,
+    title: 'Spiktävling',
+    description: 'Spika ner ett antal spikar i en bräda på kortast tid.',
+    resources: ['Hammare', 'Spik', 'Bräda']
+  },
+  {
+    id: 5,
+    title: 'Spiktävling',
+    description: 'Spika ner ett antal spikar i en bräda på kortast tid.',
+    resources: ['Hammare', 'Spik', 'Bräda']
+  }
+]
 
 const colors = [
   '#4baea0',
