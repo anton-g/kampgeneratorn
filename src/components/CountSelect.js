@@ -41,6 +41,6 @@ const StyledSelect = styled.select`
   background-color: transparent;
   padding: 4px 6px;
   height: 40px;
-  width: 160px;
+  width: 180px;
   font-family: 'Roboto Mono', monospace;
 `

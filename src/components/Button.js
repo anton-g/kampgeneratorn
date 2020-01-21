@@ -1,18 +1,13 @@
-import React from 'react'
 import styled from 'styled-components'
 
-export default function Button({ onClick }) {
-  return <StyledButton onClick={onClick}>Nu kör vi!</StyledButton>
-}
-
-const StyledButton = styled.button`
+export default styled.button`
   color: #ece8d9;
   font-size: 1.3rem;
   line-height: 1.3;
   border: 3px solid #ece8d9;
   padding: 4px 6px;
   height: 40px;
-  width: 160px;
+  width: 180px;
   font-family: 'Roboto Mono', monospace;
   border-radius: 5px;
   margin-top: 10px;
