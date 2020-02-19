@@ -5,7 +5,7 @@ import Card from './Card'
 export default function Cards({ items }) {
   const itemsWithColors = useMemo(() => addColors(items), [items])
 
-  const transitions = useTransition(itemsWithColors, item => item.id, {
+  const transition = useTransition(itemsWithColors, {
     from: {
       opacity: 0,
       transform: `perspective(600px) rotateX(-90deg)`
@@ -17,7 +17,7 @@ export default function Cards({ items }) {
     leave: {
       transform: `perspective(600px) rotateX(90deg)`
     },
-    trail: 250,
+    trail: 150,
     config: (item, state) => {
       switch (state) {
         case 'enter':
@@ -32,12 +32,11 @@ export default function Cards({ items }) {
     }
   })
 
-  return transitions.map(({ item, props, key }) => (
+  return transition((props, item) => (
     <AnimatedCard
-      key={key}
       item={item}
       style={{
-        opacity: props.opacity.interpolate(o => o),
+        opacity: props.opacity.to(o => o),
         transform: props.transform
       }}
     />

@@ -35,7 +35,7 @@ export default function Header({ selectedCount = 3 }) {
   })
 
   const item = items.find(i => i.key === selectedCount) ?? items[0]
-  const transitions = useTransition(item, item => item.text, {
+  const transition = useTransition(item, {
     from: { position: 'absolute', opacity: 0, transform: 'translateY(-100%)' },
     enter: { opacity: 1, transform: 'translateY(0%)' },
     leave: { opacity: 0, transform: 'translateY(50%)' },
@@ -50,10 +50,8 @@ export default function Header({ selectedCount = 3 }) {
   return (
     <StyledHeading>
       <StyledHeadingTop style={topAnimation}>
-        {transitions.map(({ item, key, props }) => (
-          <animated.span key={key} style={props}>
-            {item.text}
-          </animated.span>
+        {transition((props, item) => (
+          <animated.span style={props}>{item.text}</animated.span>
         ))}
         <animated.span style={paddingAnimation}>kamps</animated.span>
       </StyledHeadingTop>

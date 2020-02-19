@@ -40,5 +40,12 @@ const tempData = [
     description:
       'Med händerna bakom ryggen ska deltagarna tävla i att äta upp en lakritsrem snabbast. Denna lek fungerar även som stafett med lag.',
     resources: ['Godissnöre']
+  },
+  {
+    id: 6,
+    title: 'Plocka ärtor',
+    description:
+      'Alla deltagare får ett sugrör. Framför deltagarna ställer man tallrikar med ärtor. När starten går ska man suga upp en ärta i taget med sugröret och släppa ner den på antingen en tom tallrik eller i en mugg. Den som flyttat flest ärtor när tiden går ut vinner.',
+    resources: ['Sugrör', 'Ärtor', 'Tallrik/Mugg']
   }
 ]
