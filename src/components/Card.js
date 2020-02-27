@@ -22,7 +22,8 @@ export default function Card({ item, style }) {
 
 const CardContainer = styled.div`
   box-sizing: border-box;
-  width: 500px;
+  max-width: 500px;
+  width: 100%;
   min-height: 100px;
   will-change: transform, opacity;
   transform-origin: center top;

@@ -8,15 +8,17 @@ const springConfig = {
   mass: 4
 }
 
+const paddingMultiplier = window.innerWidth < 450 ? 0.685 : 1
+
 const items = [
   {
     key: 3,
     text: 'Tre',
-    padding: 91
+    padding: 91 * paddingMultiplier
   },
-  { key: 5, text: 'Fem', padding: 119 },
-  { key: 7, text: 'Sju', padding: 88 },
-  { key: 10, text: 'Tio', padding: 87 }
+  { key: 5, text: 'Fem', padding: 119 * paddingMultiplier },
+  { key: 7, text: 'Sju', padding: 88 * paddingMultiplier },
+  { key: 10, text: 'Tio', padding: 87 * paddingMultiplier }
 ]
 
 export default function Header({ selectedCount = 3 }) {
@@ -76,14 +78,26 @@ const StyledHeading = styled.h1`
     0 1px 3px rgba(0, 0, 0, 0.3), 0 3px 5px rgba(0, 0, 0, 0.2),
     0 5px 10px rgba(0, 0, 0, 0.25), 0 5px 5px rgba(0, 0, 0, 0.2),
     0 10px 10px rgba(0, 0, 0, 0.15);
+
+  @media (max-width: 400px) {
+    font-size: 42px;
+  }
 `
 
 const StyledHeadingTop = styled(animated.span)`
   margin-left: -45px;
   transform: rotate(-8deg);
+
+  @media (max-width: 400px) {
+    margin-left: -30px;
+  }
 `
 
 const StyledHeadingBottom = styled(animated.span)`
   margin-left: 45px;
   transform: rotate(-8deg);
+
+  @media (max-width: 400px) {
+    margin-left: 30px;
+  }
 `
