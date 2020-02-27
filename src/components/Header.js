@@ -8,7 +8,8 @@ const springConfig = {
   mass: 4
 }
 
-const paddingMultiplier = window.innerWidth < 450 ? 0.685 : 1
+const responsiveBreakpoint = 450
+const paddingMultiplier = window.innerWidth < responsiveBreakpoint ? 0.685 : 1
 
 const items = [
   {
@@ -79,7 +80,7 @@ const StyledHeading = styled.h1`
     0 5px 10px rgba(0, 0, 0, 0.25), 0 5px 5px rgba(0, 0, 0, 0.2),
     0 10px 10px rgba(0, 0, 0, 0.15);
 
-  @media (max-width: 400px) {
+  @media (max-width: ${responsiveBreakpoint}px) {
     font-size: 42px;
   }
 `
@@ -88,7 +89,7 @@ const StyledHeadingTop = styled(animated.span)`
   margin-left: -45px;
   transform: rotate(-8deg);
 
-  @media (max-width: 400px) {
+  @media (max-width: ${responsiveBreakpoint}px) {
     margin-left: -30px;
   }
 `
@@ -97,7 +98,7 @@ const StyledHeadingBottom = styled(animated.span)`
   margin-left: 45px;
   transform: rotate(-8deg);
 
-  @media (max-width: 400px) {
+  @media (max-width: ${responsiveBreakpoint}px) {
     margin-left: 30px;
   }
 `
