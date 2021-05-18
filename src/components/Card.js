@@ -11,7 +11,7 @@ export default function Card({ item, style }) {
       <CardMaterial>
         <h3>Du behöver</h3>
         <ul>
-          {item.resources.map(x => (
+          {item.resources.map((x) => (
             <li key={x}>{x}</li>
           ))}
         </ul>
@@ -28,7 +28,7 @@ const CardContainer = styled.div`
   will-change: transform, opacity;
   transform-origin: center top;
   background-size: cover;
-  background-color: ${props => props.color};
+  background-color: ${(props) => props.color};
   border-radius: 10px;
   border: 3px solid #ece8d9;
   margin-bottom: 10px;
@@ -55,7 +55,7 @@ const CardDescription = styled.p`
 `
 
 const CardMaterial = styled.div`
-  flex-shrink: 0;
+  min-width: 96px;
   margin-top: 4px;
 
   h3 {
@@ -65,6 +65,7 @@ const CardMaterial = styled.div`
   }
 
   ul {
+    font-size: 14px;
     list-style: none;
     margin: 0;
     margin-bottom: 8px;

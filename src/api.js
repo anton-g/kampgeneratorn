@@ -1,3 +1,5 @@
 export const getActivities = async (count) => {
-  return await fetch('/.netlify/functions/activities').then((r) => r.json())
+  return await fetch(`/.netlify/functions/activities?count=${count}`).then(
+    (r) => r.json()
+  )
 }
