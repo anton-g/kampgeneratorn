@@ -18,7 +18,7 @@ export default function Cards({ items }) {
     leave: {
       opacity: 0,
     },
-    trail: 150,
+    trail: (3 / itemsWithColors.length) * 250,
     config: (idx, item, state) => {
       switch (state) {
         case 'enter':

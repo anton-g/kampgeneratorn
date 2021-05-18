@@ -38,7 +38,7 @@ function App() {
       <Header selectedCount={settings.count}></Header>
       <FormWrapper style={anim}>
         <Settings onChange={setSettings}></Settings>
-        <Button onClick={handleClick}>
+        <Button onClick={handleClick} disabled={loading}>
           {loading ? 'Laddar..' : items.length ? 'Börja om..' : 'Nu kör vi!'}
         </Button>
       </FormWrapper>
