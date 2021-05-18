@@ -17,7 +17,7 @@ function App() {
     from: { opacity: 0 },
     to: { opacity: 1 },
     config: config.molasses,
-    delay: 1000
+    delay: 1000,
   })
 
   const handleClick = () => {
@@ -26,7 +26,7 @@ function App() {
       return
     }
     setLoading(true)
-    getActivities(settings.count).then(activities => {
+    getActivities(settings.count).then((activities) => {
       setItems(activities)
       setLoading(false)
     })
@@ -39,7 +39,7 @@ function App() {
       <FormWrapper style={anim}>
         <Settings onChange={setSettings}></Settings>
         <Button onClick={handleClick}>
-          {loading ? 'Laddar..' : items.length ? 'Nytt försök!' : 'Nu kör vi!'}
+          {loading ? 'Laddar..' : items.length ? 'Börja om..' : 'Nu kör vi!'}
         </Button>
       </FormWrapper>
       <Cards items={items}></Cards>

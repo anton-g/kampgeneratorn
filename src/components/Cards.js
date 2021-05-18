@@ -1,43 +1,41 @@
 import React, { useMemo } from 'react'
-import { useTransition, animated } from 'react-spring'
+import { useTransition, animated, config } from 'react-spring'
 import Card from './Card'
 
 export default function Cards({ items }) {
   const itemsWithColors = useMemo(() => addColors(items), [items])
 
   const transition = useTransition(itemsWithColors, {
+    keys: (item) => item.id,
     from: {
       opacity: 0,
-      transform: `perspective(600px) rotateX(-90deg)`
+      transform: `perspective(600px) rotateX(-90deg)`,
     },
     enter: {
       opacity: 1,
-      transform: `perspective(600px) rotateX(0deg)`
+      transform: `perspective(600px) rotateX(0deg)`,
     },
     leave: {
-      transform: `perspective(600px) rotateX(90deg)`
+      opacity: 0,
     },
     trail: 150,
-    config: (item, state) => {
+    config: (idx, item, state) => {
       switch (state) {
         case 'enter':
           return { mass: 1.8, tension: 80, friction: 12, precision: 0.01 }
         case 'leave':
-          return {
-            mass: 1.8,
-            tension: 210,
-            friction: 40
-          }
+          return config.stiff
+        default:
       }
-    }
+    },
   })
 
   return transition((props, item) => (
     <AnimatedCard
       item={item}
       style={{
-        opacity: props.opacity.to(o => o),
-        transform: props.transform
+        opacity: props.opacity.to((o) => o),
+        transform: props.transform,
       }}
     />
   ))
@@ -45,7 +43,7 @@ export default function Cards({ items }) {
 
 const AnimatedCard = animated(Card)
 
-const addColors = items => {
+const addColors = (items) => {
   const randomColorStartIdx = Math.floor(Math.random() * colors.length)
 
   return items.map((item, idx) => {
@@ -53,7 +51,7 @@ const addColors = items => {
     if (colorIdx > colors.length - 1) colorIdx = colorIdx - colors.length
     return {
       ...item,
-      color: colors[colorIdx]
+      color: colors[colorIdx],
     }
   })
 }
@@ -75,5 +73,5 @@ const colors = [
   'hsl(172, 50%, 69%)',
   'hsl(288, 94%, 91%)',
   'hsl(0, 57%, 86%)',
-  'hsl(201, 49%, 80%)'
+  'hsl(201, 49%, 80%)',
 ]
