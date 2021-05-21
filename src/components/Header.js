@@ -5,7 +5,7 @@ import { animated, useSpring, useTransition, config } from 'react-spring'
 const springConfig = {
   friction: 30,
   tension: 200,
-  mass: 4
+  mass: 4,
 }
 
 const responsiveBreakpoint = 450
@@ -15,11 +15,11 @@ const items = [
   {
     key: 3,
     text: 'Tre',
-    padding: 91 * paddingMultiplier
+    padding: 91 * paddingMultiplier,
   },
   { key: 5, text: 'Fem', padding: 119 * paddingMultiplier },
   { key: 7, text: 'Sju', padding: 88 * paddingMultiplier },
-  { key: 10, text: 'Tio', padding: 87 * paddingMultiplier }
+  { key: 10, text: 'Tio', padding: 87 * paddingMultiplier },
 ]
 
 export default function Header({ selectedCount = 3 }) {
@@ -27,27 +27,27 @@ export default function Header({ selectedCount = 3 }) {
     from: { opacity: 0, transform: 'translate(-100%) rotate(8deg)' },
     to: { opacity: 1, transform: 'translate(0) rotate(-8deg)' },
     config: springConfig,
-    delay: 500
+    delay: 500,
   })
 
   const bottomAnimation = useSpring({
     from: { opacity: 0, transform: 'translate(100%) rotate(8deg)' },
     to: { opacity: 1, transform: 'translate(0) rotate(-8deg)' },
     config: springConfig,
-    delay: 500
+    delay: 500,
   })
 
-  const item = items.find(i => i.key === selectedCount) ?? items[0]
+  const item = items.find((i) => i.key === selectedCount) ?? items[0]
   const transition = useTransition(item, {
     from: { position: 'absolute', opacity: 0, transform: 'translateY(-100%)' },
     enter: { opacity: 1, transform: 'translateY(0%)' },
     leave: { opacity: 0, transform: 'translateY(50%)' },
-    config: config.stiff
+    config: config.stiff,
   })
 
   const paddingAnimation = useSpring({
     paddingLeft: `${item.padding}px`,
-    config: config.wobbly
+    config: config.wobbly,
   })
 
   return (

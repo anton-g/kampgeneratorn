@@ -6,5 +6,7 @@ export const GlobalStyles = createGlobalStyle`
   body {
     background-color: #142d4c;
     font-family: 'Roboto Mono', monospace; /* TODO replace with Inter? */
+    overflow-x: hidden;
+    text-rendering: optimizeSpeed;
   }
 `
