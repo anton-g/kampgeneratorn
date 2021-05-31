@@ -1,5 +1,8 @@
 exports.handler = async (event, context) => {
-  const count = event.queryStringParameters.count || 3
+  const count =
+    event?.queryStringParameters?.count > 10
+      ? 3
+      : event.queryStringParameters.count
 
   const activities = getRandom(tempData, count)
 
@@ -548,124 +551,39 @@ const tempData = [
       'Lägg en av grupperna med saker i en hög på en plats som inte syns från långt håll. Ställ sedan den andra gruppen på ett led ca 10 meter bort men som inte syns från den första platsen.. Det gäller sedan för deltagarna att springa från högen med saker till den andra platsen, titta hur sakerna står uppställda, springa tillbaka och försöka ställa upp högen med saker på exakt samma sätt. Sakerna måste alltså stå i exakt rätt ordning men också vända åt rätt håll och så vidare. Man får springa flera gånger, men inte ta med sig några saker eller ta kort. Snabbast vinner.',
     resources: ['Två likadana grupper av saker'],
   },
-  // {
-  //   id: ,
-  //   title: '',
-  //   description: '',
-  //   resources: [],
-  // },
-  // {
-  //   id: ,
-  //   title: '',
-  //   description: '',
-  //   resources: [],
-  // },
-  // {
-  //   id: ,
-  //   title: '',
-  //   description: '',
-  //   resources: [],
-  // },
-  // {
-  //   id: ,
-  //   title: '',
-  //   description: '',
-  //   resources: [],
-  // },
-  // {
-  //   id: ,
-  //   title: '',
-  //   description: '',
-  //   resources: [],
-  // },
-  // {
-  //   id: ,
-  //   title: '',
-  //   description: '',
-  //   resources: [],
-  // },
-  // {
-  //   id: ,
-  //   title: '',
-  //   description: '',
-  //   resources: [],
-  // },
-  // {
-  //   id: ,
-  //   title: '',
-  //   description: '',
-  //   resources: [],
-  // },
-  // {
-  //   id: ,
-  //   title: '',
-  //   description: '',
-  //   resources: [],
-  // },
-  // {
-  //   id: ,
-  //   title: '',
-  //   description: '',
-  //   resources: [],
-  // },
-  // {
-  //   id: ,
-  //   title: '',
-  //   description: '',
-  //   resources: [],
-  // },
-  // {
-  //   id: ,
-  //   title: '',
-  //   description: '',
-  //   resources: [],
-  // },
-  // {
-  //   id: ,
-  //   title: '',
-  //   description: '',
-  //   resources: [],
-  // },
-  // {
-  //   id: ,
-  //   title: '',
-  //   description: '',
-  //   resources: [],
-  // },
-  // {
-  //   id: ,
-  //   title: '',
-  //   description: '',
-  //   resources: [],
-  // },
-  // {
-  //   id: ,
-  //   title: '',
-  //   description: '',
-  //   resources: [],
-  // },
-  // {
-  //   id: ,
-  //   title: '',
-  //   description: '',
-  //   resources: [],
-  // },
-  // {
-  //   id: ,
-  //   title: '',
-  //   description: '',
-  //   resources: [],
-  // },
-  // {
-  //   id: ,
-  //   title: '',
-  //   description: '',
-  //   resources: [],
-  // },
-  // {
-  //   id: ,
-  //   title: '',
-  //   description: '',
-  //   resources: [],
-  // }
+  {
+    id: 76,
+    title: 'Smakleken',
+    description:
+      'Välj ut ett antal "smaker" utifrån antalet i varje lag. En person i laget får komma in i ett rum och genom blindtest smaka från en liten sked eller liknande och sen gissa vad det är. Några smaker kan tex vara gräddfil, senap, kapris etc.',
+    resources: ['Saker som smakar'],
+  },
+  {
+    id: 77,
+    title: 'Gåtan',
+    description:
+      'Ett upplägg stulet direkt från Fångarna på Fortet. En deltagare får gå till en gåtmästare och försöka svara på en gåta för att vinna poäng.',
+    resources: [],
+  },
+  {
+    id: 78,
+    title: 'Rulla sovsäck',
+    description:
+      'Istället för att hoppa säck så kan man rulla sovsäck. Snabbast från punkt A till B vinner. Går enkelt att göra till stafett genom att ha flera sovsäckar eller att laget måste använda samma och byta vid växling.',
+    resources: ['Sovsäckar'],
+  },
+  {
+    id: 79,
+    title: 'Blindbock',
+    description:
+      'En person i laget får ögonbindel och ska sedan ta sig från punkt A till B med hjälp av sina skrikande lagkamrater. Här går det också att variera mycket genom att tex göra en hinderbana eller att deltagaren måste bära med sig ett par hinkar med vatten eller liknande.',
+    resources: ['Ögonbindlar'],
+  },
+  {
+    id: 80,
+    title: 'Nypa nypor',
+    description:
+      'Sätt upp en tvättlina och sätt fast massor av klädnypor i olika färger. Här gäller det sen för deltagarna att plocka flest nypor i sitt lags färg och ta de tillbaka till laget. Man får dock endast använda 1 hand. Tappar man en klädnypa måste man släppa alla och springa tillbaka till laget för att byta.',
+    resources: ['Klädlina', 'Klädnypor'],
+  },
 ]
