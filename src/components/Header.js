@@ -10,7 +10,7 @@ const springConfig = {
 }
 
 const responsiveBreakpoint = 450
-const paddingMultiplier = window.innerWidth < responsiveBreakpoint ? 0.75 : 1
+const paddingMultiplier = window.innerWidth < responsiveBreakpoint ? 0.73 : 1
 
 const items = [
   {
@@ -55,9 +55,9 @@ export default function Header({ selectedCount = 3 }) {
     <StyledHeading>
       <StyledHeadingTop style={topAnimation}>
         {transition((props, item) => (
-          <animated.span style={props}>{item.text}</animated.span>
+          <Text style={props}>{item.text}</Text>
         ))}
-        <animated.span style={paddingAnimation}>kamps</animated.span>
+        <Text style={paddingAnimation}>kamps</Text>
       </StyledHeadingTop>
       <StyledHeadingBottom style={bottomAnimation}>
         Generatorn
@@ -86,7 +86,12 @@ const StyledHeading = styled.h1`
   }
 `
 
+const Text = styled(animated.span)`
+  will-change: opacity, transform, padding-left;
+`
+
 const StyledHeadingTop = styled(animated.span)`
+  will-change: opacity, transform;
   margin-left: -45px;
   transform: rotate(-8deg);
 
@@ -96,6 +101,7 @@ const StyledHeadingTop = styled(animated.span)`
 `
 
 const StyledHeadingBottom = styled(animated.span)`
+  will-change: opacity, transform;
   margin-left: 45px;
   transform: rotate(-8deg);
 
