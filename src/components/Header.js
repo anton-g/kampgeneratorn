@@ -6,6 +6,7 @@ const springConfig = {
   friction: 30,
   tension: 200,
   mass: 4,
+  precision: 0.0005,
 }
 
 const responsiveBreakpoint = 450

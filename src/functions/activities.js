@@ -1,6 +1,6 @@
 exports.handler = async (event, context) => {
   const count =
-    event?.queryStringParameters?.count > 10
+    !event.queryStringParameters.count || event.queryStringParameters.count > 10
       ? 3
       : event.queryStringParameters.count
 

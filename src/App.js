@@ -16,7 +16,7 @@ function App() {
   const anim = useSpring({
     from: { opacity: 0 },
     to: { opacity: 1 },
-    config: config.molasses,
+    config: { ...config.molasses, precision: 0.1 },
     delay: 1000,
   })
 
