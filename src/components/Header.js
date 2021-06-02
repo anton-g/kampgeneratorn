@@ -10,7 +10,7 @@ const springConfig = {
 }
 
 const responsiveBreakpoint = 450
-const paddingMultiplier = window.innerWidth < responsiveBreakpoint ? 0.685 : 1
+const paddingMultiplier = window.innerWidth < responsiveBreakpoint ? 0.75 : 1
 
 const items = [
   {
