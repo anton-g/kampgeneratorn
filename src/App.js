@@ -8,6 +8,13 @@ import Settings from './components/Settings'
 import Button from './components/Button'
 import Cards from './components/Cards'
 
+const goals = {
+  3: 'GJZL6ZH7',
+  5: 'M0NDTENR',
+  7: '56OK1A22',
+  10: 'KKSMD19P',
+}
+
 function App() {
   const [settings, setSettings] = useState({ count: 3 })
   const [loading, setLoading] = useState(false)
@@ -29,6 +36,7 @@ function App() {
     getActivities(settings.count).then((activities) => {
       setItems(activities)
       setLoading(false)
+      window.fathom.trackGoal(goals[settings.count], 0)
     })
   }
 
