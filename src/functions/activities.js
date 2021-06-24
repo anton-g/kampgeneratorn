@@ -366,7 +366,7 @@ const tempData = [
     id: 49,
     title: 'Ballongkull',
     description:
-      'Alla tävlande får två ballonger att knyta fast runt foten. Sen ska du försöka spränga ballongerna på din motståndares fötter genom att springa runt och jaga varandra. Sisten kvar vinner. Går även att dela ',
+      'Alla tävlande får en eller två ballonger att knyta fast runt foten. Sen ska du försöka spränga ballongerna på din motståndares fötter genom att springa runt och jaga varandra. Sisten med ballonger kvar vinner. Går även att dela upp i lag med olika färger på ballongerna.',
     resources: ['Ballonger', 'Snöre'],
   },
   {
